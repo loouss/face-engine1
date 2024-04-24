@@ -11,6 +11,7 @@ package faceengine
 import "C"
 
 import (
+	"strconv"
 	"unsafe"
 )
 
@@ -725,7 +726,7 @@ func (feature *FaceFeature) Release() {
 
 // 实现Error接口
 func (err EngineError) Error() string {
-	return err.Text
+	return "code: " + strconv.Itoa(err.Code) + " , text: " + err.Text
 }
 
 func newError(code int, text string) EngineError {
